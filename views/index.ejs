@@ -1,16 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
   <head>
-    <title>Sealify</title>
+    <title>Hello</title>
     <%include templates/bootstrap.ejs%>
     <!-- Custom styles for this template -->
     <link href="/css/cover.css" rel="stylesheet">
-     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
-  <body>
-    <h1><%= title %></h1>
-    <p></p>
+  <body ng-controller="controller">
+    <div class="row container">
+      <div class="col-md-3">
+        <div class="list-group">
+          <% for(var i = 1; i < 21; i++) {%>
+          <a href="#" class="list-group-item">
+            <h4 class="list-group-item-heading">Chat name <%=i%></h4>
+            <p class="list-group-item-text">Bogo sort</p>
+          </a>
+          <%};%>
+        </div>
+     </div>
+      <div class="col-md-9">
+        This is where the current convo will go
+      </div>
+    </div>
   </body>
 <%include templates/angular.ejs%>
 </html>
