@@ -1,35 +1,12 @@
 var gulp = require('gulp');
 var jsdoc = require('gulp-jsdoc3');
-var async = require('async');
+var mocha = require('gulp-mocha');
 
 
-gulp.task('test', function(cb) {
-  var um = require('./routes/users.js');
-  setTimeout(function() {
-    async.waterfall([
-      function(callback) {
-        um.register('test', 'test', function(err, result) {
-          console.log(err, result);
-          callback(err);
-        });
-      },
-      function(callback) {
-        um.login('test', 'test', function(err, result) {
-          console.log(err, result);
-          callback(err);
-        });
-      },
-      function(callback) {
-        um.delete('test', 'test', function(err, result) {
-          console.log(err, result);
-          callback(err);
-        });
-      },
-      function(callback) {
-        um.db.close(callback);
-      }
-    ], cb);
-  }, 100);
+gulp.task('test', function() {
+  return gulp.src('./test/test.js', {read: false})
+  // gulp-mocha needs filepaths so you can't have any plugins before it
+  .pipe(mocha({reporter: 'progress'}));
 });
 
 gulp.task('docs', function(cb) {

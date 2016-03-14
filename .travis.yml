@@ -21,3 +21,5 @@ addons:
     - g++-4.8
     - python2.7
     - python2.7-dev
+after_success:
+    - npm run coveralls

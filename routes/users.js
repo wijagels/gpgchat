@@ -130,7 +130,3 @@ UserManager.prototype.delete = function(username, password, cb) {
     }
   ], cb);
 };
-
-UserManager.prototype.helloworld = function() {
-  console.log('hello, world', this.BC_LEVEL);
-};
