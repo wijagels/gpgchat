@@ -1,10 +1,10 @@
 var gulp = require('gulp');
-var jsdoc = require('gulp-jsdoc');
+var jsdoc = require('gulp-jsdoc3');
 var async = require('async');
 
-var um = require('./routes/users.js');
 
 gulp.task('test', function(cb) {
+  var um = require('./routes/users.js');
   setTimeout(function() {
     async.waterfall([
       function(callback) {
@@ -24,12 +24,16 @@ gulp.task('test', function(cb) {
           console.log(err, result);
           callback(err);
         });
+      },
+      function(callback) {
+        um.db.close(callback);
       }
     ], cb);
   }, 100);
 });
 
-gulp.task('docs', function() {
-  gulp.src('./routes/*.js')
-    .pipe(jsdoc('./documentation'));
+gulp.task('docs', function(cb) {
+  var config = require('./jsdoc.json');
+  gulp.src(['README.md', 'package.json', './routes/*.js'], {read: false})
+    .pipe(jsdoc(config, cb));
 });
