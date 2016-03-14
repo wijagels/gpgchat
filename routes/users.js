@@ -16,13 +16,9 @@ function UserManager() {
   this.users = null;
   this.url = 'mongodb://localhost:27017/gpgchat';
   MongoClient.connect(this.url, (err, database) => {
-    if(err != null) {
-      console.info('Alert: no db connection :(');
-    }
-    else {
+    if(!err) {
       this.db = database;
       this.users = this.db.collection('users');
-      console.info('Connected correctly to server');
     }
   });
 }
