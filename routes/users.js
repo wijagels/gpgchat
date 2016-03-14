@@ -2,7 +2,13 @@ var MongoClient = require('mongodb').MongoClient;
 var async = require('async');
 var bcrypt = require('bcrypt');
 
-module.exports = new UserManager;
+module.exports = new UserManager();
+
+/**
+ * UserManager constructor
+ *
+ * @constructor
+ */
 
 function UserManager() {
   this.BC_LEVEL = 10;
@@ -21,14 +27,23 @@ function UserManager() {
   });
 }
 
-UserManager.prototype.login = (username, password, cb) => {
-  if(!this.db) {
-    console.log(this.BC_LEVEL);
+/**
+ * Login function
+ *
+ * @api public
+ * @param {string} username
+ * @param {string} password
+ * @param {function} cb
+ */
+
+UserManager.prototype.login = function(username, password, cb) {
+  if(!this.db || !this.users) {
     return cb(new Error('No db connection'));
   }
+  var users = this.users;
   async.waterfall([
     function(callback) {
-      this.users.findOne({'user': username}, (err, docs) => {
+      users.findOne({'user': username}, (err, docs) => {
         if(!docs) {
           return callback(new Error('No such user'));
         }
@@ -36,18 +51,31 @@ UserManager.prototype.login = (username, password, cb) => {
       });
     },
     function(docs, callback) {
-      bcrypt.compare(password, docs.password, callback);
+      bcrypt.compare(password, docs.pass, (err, result) => {
+        callback(err, result, docs);
+      });
     }
   ], cb);
 };
 
-UserManager.prototype.register = (username, password, cb) => {
+/**
+ * Register new user function
+ *
+ * @api public
+ * @param {string} username
+ * @param {string} password
+ * @param {function} cb callback to be called with cb(err, result)
+ */
+
+UserManager.prototype.register = function(username, password, cb) {
   if(!this.db) {
     return cb(new Error('No db connection'));
   }
+  var users = this.users;
+  var BC_LEVEL = this.BC_LEVEL;
   async.waterfall([
     function(callback) {
-      this.users.findOne({'user': username}, (err, docs) => {
+      users.findOne({'user': username}, (err, docs) => {
         // If search returns results, error.
         if(docs) {
           return callback(new Error('User exists'));
@@ -56,7 +84,7 @@ UserManager.prototype.register = (username, password, cb) => {
       });
     },
     function(callback) {
-      bcrypt.hash(password, this.BC_LEVEL, (err, hash) => {
+      bcrypt.hash(password, BC_LEVEL, (err, hash) => {
         if(err) {
           return callback(err);
         }
@@ -64,18 +92,28 @@ UserManager.prototype.register = (username, password, cb) => {
       });
     },
     function(hash, callback) {
-      this.users.insertOne({'user': username, 'pass': hash}, callback);
+      users.insertOne({'user': username, 'pass': hash}, callback);
     }
   ], cb);
 };
 
-UserManager.prototype.delete = (username, password, cb) => {
+/**
+ * Delete existing user function
+ *
+ * @api public
+ * @param {string} username
+ * @param {string} password
+ * @param {function} cb
+ */
+
+UserManager.prototype.delete = function(username, password, cb) {
   if(!this.db) {
     return cb(new Error('No db connection'));
   }
+  var users = this.users;
   async.waterfall([
     function(callback) {
-      this.users.findOne({'user': username}, (err, docs) => {
+      users.findOne({'user': username}, (err, docs) => {
         if(!docs) {
           return callback(new Error('No such user'));
         }
@@ -83,11 +121,16 @@ UserManager.prototype.delete = (username, password, cb) => {
       });
     },
     function(docs, callback) {
-      bcrypt.compare(password, docs.password, callback);
+      bcrypt.compare(password, docs.pass, (err, result) => {
+        callback(err, docs, result);
+      });
+    },
+    function(docs, result, callback) {
+      users.removeOne(docs, callback);
     }
   ], cb);
 };
 
 UserManager.prototype.helloworld = function() {
-  console.log('hello, world');
+  console.log('hello, world', this.BC_LEVEL);
 };
