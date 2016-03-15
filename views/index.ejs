@@ -13,10 +13,10 @@
     }
   </style>
   <body ng-controller="controller">
-    <div class="row container">
+    <div class="row">
       <div class="col-md-3">
             <a href="#" class="list-group-item active">
-              <h4 class="list-group-item-heading">gpgChat <%=i%></h4>
+              <h4 class="list-group-item-heading">gpgChat</h4>
               <p class="list-group-item-text">Bogo sort</p>
             </a>
           <div class="list-group">
@@ -31,8 +31,11 @@
         </div>
      </div>
       <div class="col-md-9">
-        This is where the current convo will go
-      </div>
+            <a href="#" class="list-group-item active">
+              <h4 class="list-group-item-heading">Current Convo name</h4>
+              <br>
+            </a>
+       </div>
     </div>
   </body>
 <%include templates/angular.ejs%>
