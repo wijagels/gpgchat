@@ -6,16 +6,28 @@
     <!-- Custom styles for this template -->
     <link href="/css/cover.css" rel="stylesheet">
   </head>
+  <style> 
+    .scrollable {
+      height: 870px;
+      overflow-y: auto;
+    }
+  </style>
   <body ng-controller="controller">
     <div class="row container">
       <div class="col-md-3">
-        <div class="list-group">
-          <% for(var i = 1; i < 21; i++) {%>
-          <a href="#" class="list-group-item">
-            <h4 class="list-group-item-heading">Chat name <%=i%></h4>
-            <p class="list-group-item-text">Bogo sort</p>
-          </a>
-          <%};%>
+            <a href="#" class="list-group-item active">
+              <h4 class="list-group-item-heading">gpgChat <%=i%></h4>
+              <p class="list-group-item-text">Bogo sort</p>
+            </a>
+          <div class="list-group">
+         <div class=scrollable>
+            <% for(var i = 1; i < 51; i++) {%>
+            <a href="#" class="list-group-item">
+              <h4 class="list-group-item-heading">Chat name <%=i%></h4>
+              <p class="list-group-item-text">Bogo sort</p>
+            </a>
+            <%};%>
+          </div>
         </div>
      </div>
       <div class="col-md-9">

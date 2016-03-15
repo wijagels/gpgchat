@@ -41,4 +41,3 @@ module.exports = function(server) {
     });
   });
 };
-users.helloworld();
