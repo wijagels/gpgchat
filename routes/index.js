@@ -6,6 +6,10 @@ router.get('/ind', function(req, res) {
   res.render('index', { title: 'Express' });
 });
 
+router.get('/chat', function(req, res) {
+  res.render('chat');
+});
+
 /**
  * Login POST api.
  * Sets a cookie with the username upon success.
