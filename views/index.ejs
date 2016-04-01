@@ -16,10 +16,10 @@
 
     <!-- Custom CSS -->
     <link href="css/grayscale.css" rel="stylesheet">
-    
+
     <!--Animate CSS-->
     <link href="css/animate.css" rel="stylesheet">
-    
+
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
@@ -48,39 +48,56 @@
     .navbar-custom .navbar-nav .open .dropdown-menu>li>a,.navbar-custom .navbar-nav .open .dropdown-menu {
       color:#ffffff;
     }
-.dropdown-menu {
-    width: 300px !important;
-}
-.text-shadow {
- text-shadow: 2px 2px 4px #000000;
-}
-
-.vesselFade {
-    -webkit-animation-delay: 0.3s; /* Chrome, Safari, Opera */
-    animation-delay: 0.3s;
-}
-
-.firstFade {
-    -webkit-animation-delay: 1s; /* Chrome, Safari, Opera */
-    animation-delay: 1s;
-}
-.secondFade {
-    -webkit-animation-delay: 2s; /* Chrome, Safari, Opera */
-    animation-delay: 2s;
-}
-.secondPulse {
-    -webkit-animation-delay: 2.5s; /* Chrome, Safari, Opera */
-    animation-delay: 2.5s;
-    -webkit-animation-duration: 2s; /* Chrome, Safari, Opera */
-    animation-duration: 2s;    
-    -webkit-animation-iteration-count: 20; /* Chrome, Safari, Opera */
-    animation-iteration-count: 20;
-}
-input.transparent-input{      
-  background-color:transparent !important;
-  border:none !important;
+    .dropdown-menu {
+      width: 300px !important;
     }
- </style>
+    .text-shadow {
+      text-shadow: 2px 2px 4px #000000;
+    }
+
+    .vesselFade {
+      -webkit-animation-delay: 0.3s; /* Chrome, Safari, Opera */
+      animation-delay: 0.3s;
+    }
+
+    .firstFade {
+      -webkit-animation-delay: 1s; /* Chrome, Safari, Opera */
+      animation-delay: 1s;
+    }
+    .secondFade {
+      -webkit-animation-delay: 1.7s; /* Chrome, Safari, Opera */
+      animation-delay: 1.7s;
+    }
+    .thirdFade {
+      -webkit-animation-delay: 2.7s; /* Chrome, Safari, Opera */
+      animation-delay: 2.7s;
+    }
+    .secondPulse {
+      -webkit-animation-delay: 2.7s; /* Chrome, Safari, Opera */
+      animation-delay: 2.7s;
+      -webkit-animation-duration: 2s; /* Chrome, Safari, Opera */
+      animation-duration: 2s;    
+      -webkit-animation-iteration-count: 20; /* Chrome, Safari, Opera */
+      animation-iteration-count: 20;
+    }
+    input.transparent-input{      
+      background-color:transparent !important;
+      border:none !important;
+    }
+.btn-signUp {
+  border: 2px solid white;
+  color: white;
+  background-color: transparent;
+}
+.btn-signUp:hover,
+.btn-signUp:focus {
+  border: 2px solid white;
+  outline: none;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.2) ;
+}
+
+  </style>
   <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
     <!-- Navigation -->
@@ -105,37 +122,37 @@ input.transparent-input{
             <li>
               <a class="page-scroll" href="#about">About</a>
             </li>
-              <li>
-                <a class="page-scroll" href="#contact">Contact</a>
-              </li>
+            <li>
+              <a class="page-scroll" href="#contact">Contact</a>
+            </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sign Up<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <div class="form-group">
-                      <input type="email" class="form-control transparent-input" id="email" placeholder="Email">
-                    </div>
-                  </li>
-                  <li>
-                    <div class="form-group">
-                      <input type="keybase" class="form-control transparent-input" id="Keybase" placeholder="Keybase Username">
-                    </div>
-                  </li>
-                  <li>
-                    <div class="form-group">
-                      <input type="password" class="form-control transparent-input" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                  </li>
-                  <li>
-                    <div class="form-group">
-                      <input type="password" class="form-control transparent-input" id="exampleInputPassword1" placeholder="Confirm Password">
-                    </div>
-                  </li>
-                  <li role="separator" class="divider"></li>
-                  <li>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                  </li>
-                </ul>
+              <ul class="dropdown-menu">
+                <li>
+                  <div class="form-group">
+                    <input type="email" class="form-control transparent-input" id="email" placeholder="Email">
+                  </div>
+                </li>
+                <li>
+                  <div class="form-group">
+                    <input type="keybase" class="form-control transparent-input" id="Keybase" placeholder="Keybase Username">
+                  </div>
+                </li>
+                <li>
+                  <div class="form-group">
+                    <input type="password" class="form-control transparent-input" id="exampleInputPassword1" placeholder="Password">
+                  </div>
+                </li>
+                <li>
+                  <div class="form-group">
+                    <input type="password" class="form-control transparent-input" id="exampleInputPassword1" placeholder="Confirm Password">
+                  </div>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li>
+                  <button type="submit" class="btn btn-default">Submit</button>
+                </li>
+              </ul>
 
             </li> 
             <li>
@@ -173,7 +190,9 @@ input.transparent-input{
             <div class="col-md-8 col-md-offset-2">
               <h1 style="font-family: 'Lobster', cursive;" class="brand-heading vesselFade animated fadeIn">Vessel</h1>
               <p class="intro-text text-shadow firstFade animated fadeIn">Encrypt your conversations.</p>
-              <a href="#about" class="btn btn-circle page-scroll secondFade animated fadeIn">
+              <a href="/signUp" class="btn btn-signUp btn-lg secondFade animated fadeIn">Sign Up/Login</a>
+              <br>
+              <a href="#about" class="btn btn-circle page-scroll thirdFade animated fadeIn">
                 <i class="fa fa-angle-double-down secondPulse animated pulse"></i>
               </a>
             </div>
@@ -187,7 +206,7 @@ input.transparent-input{
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
           <h2>About Vessel</h2>
-          <p>Grayscale is a free Bootstrap 3 theme created by Start Bootstrap. It can be yours right now, simply download the template on <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
+          <p>Vessel is a free Bootstrap 3 theme created by Start Bootstrap. It can be yours right now, simply download the template on <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
           <p>This theme features stock photos by <a href="http://gratisography.com/">Gratisography</a> along with a custom Google Maps skin courtesy of <a href="http://snazzymaps.com/">Snazzy Maps</a>.</p>
           <p>Grayscale includes full HTML, CSS, and custom JavaScript files along with LESS files for easy customization.</p>
         </div>
@@ -201,19 +220,13 @@ input.transparent-input{
           <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
               <h2>Contact Us</h2>
-              <p class=text-shadow>Feel free to email us to provide some feedback on our templates, give us suggestions for new templates and themes, or to just say hello!</p>
+              <p class=text-shadow>If you have any feedback for us at Vessel, feel free to fill out a contact form, and we'll be happy to get in touch with you.</p>
               <br>
-              <p><a href="mailto:feedback@startbootstrap.com" class=text-shadow>feedback@startbootstrap.com</a>
+                  <a href="#contactForm" class="btn btn-default btn-lg"></i>Contact Form</a>
               </p>
               <ul class="list-inline banner-social-buttons">
                 <li>
-                  <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
-                </li>
-                <li>
                   <a href="https://github.com/wijagels/gpgchat-server" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
-                </li>
-                <li>
-                  <a href="https://plus.google.com/+Startbootstrap/posts" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
                 </li>
               </ul>
             </div>
